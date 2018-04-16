@@ -1,0 +1,50 @@
+﻿@model Hat_Trick.Models.League
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>League</h4>
+    <hr />
+    <dl class="dl-horizontal">
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Name)
+        </dd>
+
+        <dt>
+            Country
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Country.Name)
+        </dd>
+
+        <dt>
+            League Logo
+        </dt>
+
+        <dd>
+            @{
+            var blabla = Convert.ToBase64String(Model.Image);
+            var imgbla = String.Format("data:image/gif;base64,{0}", blabla);
+            }
+            <img src="@imgbla" alt="@Model.Name" style="width:130px" />
+        </dd>
+
+    </dl>
+</div>
+<button type="button" class="btn btn-info">
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Id })
+    </button>
+
+    <button type="button" class="btn btn-info">
+        @Html.ActionLink("Back to List", "Index")
+    </button>
